@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Otome Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Free-Pixel-Art-Background.png') repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .character {
+            position: absolute;
+            bottom: 20%;
+            right: -150px;
+            width: 150px;
+            animation: appear 2s forwards;
+        }
+        @keyframes appear {
+            to {
+                right: 50px;
+            }
+        }
+        .dialogue-box {
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 10px;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            font-size: 18px;
+            position: relative;
+            margin-top: 20px;
+        }
+        .doors {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+        .door {
+            background: #333;
+            color: #fff;
+            border: 4px solid #000;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .door:hover {
+            transform: scale(1.1);
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <img src="https://www.spriters-resource.com/resources/sheets/123/126244.png" alt="Character" class="character">
+        <div class="dialogue-box">
+            <p>What is your favorite color?</p>
+        </div>
+        <div class="doors">
+            <div class="door" onclick="chooseOption('Red')">Red</div>
+            <div class="door" onclick="chooseOption('Blue')">Blue</div>
+        </div>
+    </div>
+
+    <script>
+        function chooseOption(option) {
+            alert(`You chose ${option}!`);
+            // Add more game logic here
+        }
+    </script>
+</body>
+</html>

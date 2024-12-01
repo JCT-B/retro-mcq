@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Press Start 2P', cursive;
-            background: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Free-Pixel-Art-Background.png') repeat;
+            background: url('background.jpeg') no-repeat center center fixed;
             background-size: cover;
             overflow: hidden;
         }
@@ -20,30 +20,16 @@
             justify-content: center;
             height: 100vh;
         }
-          .character {
+        .character {
             position: absolute;
             bottom: 0;
-            right: 0;
-            width: 13cm;
-            height: 13cm;
+            left: 0; /* Position at the bottom left */
+            width: auto; /* Use original image size */
+            height: auto; /* Use original image size */
+            transform: scaleX(-1); /* Flip the character horizontally */
+            z-index: 1; /* Ensure character appears behind the dialogue box */
         }
-        .dialogue-box {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: calc(100% - 13cm); /* Full width minus the character space */
-            height: 10cm;
-            background: #fff;
-            border-radius: 20px;
-            border: 4px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            text-align: center;
-            padding: 10px;
-            box-sizing: border-box;
-        }
+       
         .doors {
             display: flex;
             justify-content: space-evenly;
@@ -63,27 +49,53 @@
             transform: scale(1.1);
             background: #555;
         }
+        .dialogue-box {
+            position: absolute;
+            bottom: calc(120px + 3cm); /* Move 3 cm upwards */
+            left: calc(10px + 200px); /* Move 200 pixels to the right */
+            width: 200px; /* Adjust based on character width */
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            z-index: 2; /* Ensure dialogue box appears above the character */
+        }
+        .clickable-image {
+            cursor: pointer;
+            position: absolute;
+            bottom: 0; /* Align with the bottom of the character */
+            right: 320px; /* Move one pixel to the left */
+        }
+        .clickable-image-2 {
+            /*border: 4px solid black;*/
+            cursor: pointer;
+            position: absolute;
+            bottom: 0; /* Align with the bottom of the character */
+            right: 592px; /* Adjust position as needed */
+        }
     </style>
 </head>
 <body>
     <div class="game-container">
-        <img src="https://www.spriters-resource.com/resources/sheets/123/126244.png" alt="Character" class="character">
+        <img src="character.png" alt="Character" class="character">
         <div class="dialogue-box">
-            <p>QUESTION APPEARS HERE!!</p>
+            Hello, welcome to the game!
         </div>
-        <div class="doors">
+    
+        <!-- <div class="doors">
             <div class="door" onclick="chooseOption('Red')">Red</div>
             <div class="door" onclick="chooseOption('Blue')">Blue</div>
-        </div>
-        <!-- Character -->
-        <img src="data:image/png;base64,<?=base64_encode(file_get_contents('file-WRXtdYzCas7wjPMvmMtS7u'))?>" alt="Character" class="character">
-
+        </div> -->
+        <img src="button1.png" alt="Button" class="clickable-image" onclick="handleClick()">
+        <img src="button2.png" alt="Button 2" class="clickable-image-2" onclick="handleClick2()">
     </div>
-
     <script>
-        function chooseOption(option) {
-            alert(`You chose ${option}!`);
-            // Add more game logic here
+        function handleClick() {
+            alert('Button clicked!');
+        }
+        function handleClick2() {
+            alert('Button 2 clicked!');
         }
     </script>
 </body>
